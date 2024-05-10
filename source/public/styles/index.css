@@ -1,3 +1,42 @@
-* {
-    box-sizing: border-box;
+:root {
+    --background: white;
+    --color: #222;
+  }
+  
+.dark-theme {
+    --background: #222;
+    --color: white;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background: var(--background);
+    color: var(--color);
+}
+
+main {
+    margin: 10px;
+}
+
+menu {
+    padding-left: 0;
+}
+
+.menu-row-1 { 
+    display: flex;  
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.menu-row-2 {
+    display: grid;
+    grid-template-columns: max-content max-content max-content max-content auto;
+    column-gap: 5px; 
+}
+
+.filter {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    justify-items: end;
 }
