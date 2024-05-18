@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Note App</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous" defer></script>
-  <script src="scripts/todo.js" type="module"></script>
-
+  <script defer src="scripts/todo.js" type="module"></script>
+  
   <link rel="stylesheet" href="styles/todo.css">
 </head>
 <body>
@@ -16,7 +15,7 @@
     <main>
         <form action="./todo.html" action="POST" id="form">
             <label for="title">Title</label>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" required>
             <label for="Importance">Importance</label>
             <input type="text" name="importance" id="Importance">      
             <label for="duedate">Due date</label>
@@ -25,12 +24,15 @@
                 <label for="done">Done</label>
                 <input type="checkbox" name="done" id="done">
             </div>
-            <label for="desciption">Desciption</label>
-            <textarea name="desciption" id="desciption"></textarea>
+            <label for="description">Description</label>
+            <textarea name="description" id="description"></textarea>
             <div>
-                <button type="submit" onclick="">Create</button>
-                <button type="submit" onclick="window.location.href='index.html'">Create & Overview</button>
-                <button type="button" onclick="window.location.href='index.html'">Overview</button>
+                <button type="button" id="btnCreate">Create</button>
+                <button type="button" id="btnCreateAndOverview">Create & Overview</button>
+                <button type="button" id="btnOverview" href=index.html>Overview</button>
+                <!-- <div class="btn">
+                    <a href='index.html'>Button</a>
+                </div> -->
             </div>                 
         </form>
     </main>

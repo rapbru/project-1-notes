@@ -28,3 +28,10 @@ main form {
     flex-direction: row-reverse;
     justify-content: flex-end;
 }
+
+/* .btn {
+    cursor: pointer;
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+} */
