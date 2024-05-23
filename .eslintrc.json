@@ -15,7 +15,7 @@
   "rules": {
     "indent": "off",
     "no-plusplus": "off",
-    "import/extensions": "off",
+    "import/extensions": "on",
     "object-curly-newline": "off",
     "object-curly-spacing": "off",
     "linebreak-style": "off"

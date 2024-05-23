@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Note App</title>
-  <script defer src="scripts/todo.js" type="module"></script>
+  <script src="../js/controllers/todo-controller.js" type="module" defer></script>  
   
-  <link rel="stylesheet" href="styles/todo.css">
+  <link rel="stylesheet" href="../styles/todo.css">
 </head>
 <body>
     <header>
@@ -16,8 +16,8 @@
         <form action="./todo.html" action="POST" id="form">
             <label for="title">Title</label>
             <input type="text" name="title" id="title" required>
-            <label for="Importance">Importance</label>
-            <input type="text" name="importance" id="Importance">      
+            <label for="importance">Importance</label>
+            <input type="number" name="importance" id="importance" max="5">      
             <label for="duedate">Due date</label>
             <input type="date" name="duedate" id="duedate">
             <div class="form-row-done">
@@ -29,7 +29,7 @@
             <div>
                 <button type="button" id="btnCreate">Create</button>
                 <button type="button" id="btnCreateAndOverview">Create & Overview</button>
-                <button type="button" id="btnOverview" href=index.html>Overview</button>
+                <button type="button" id="btnOverview">Overview</button>
                 <!-- <div class="btn">
                     <a href='index.html'>Button</a>
                 </div> -->

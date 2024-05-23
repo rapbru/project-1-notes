@@ -19,17 +19,22 @@ main {
     margin: 10px;
 }
 
-menu {
-    padding-left: 0;
+.invisible{
+    visibility: hidden;
+    height: 0px;
 }
 
-.menu-row-1 { 
+.main-container {
+    visibility: hidden;
+}
+
+.btn-row-1 { 
     display: flex;  
     justify-content: space-between;
     margin-bottom: 5px;
 }
 
-.menu-row-2 {
+.btn-row-2 {
     display: grid;
     grid-template-columns: max-content max-content max-content max-content auto;
     column-gap: 5px; 
@@ -39,4 +44,18 @@ menu {
     display: grid;
     grid-template-columns: 1fr auto;
     justify-items: end;
+}
+
+main form {
+    display: flex;
+    flex-direction: column;  
+    flex: 0 0 50%;
+    margin: 0px; 
+    row-gap: 5px;
+}
+
+.form-row-done { 
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
 }

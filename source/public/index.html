@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Note App</title>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous" defer></script>
-  <script defer src="scripts/index.js" type="module"></script>
+
+  <script defer src="js/controllers/notes-controller.js" type="module"></script>
 
   <link rel="stylesheet" href="styles/index.css">
 </head>
@@ -15,31 +15,45 @@
   </header>
 
   <main>
-    <menu>
-      <div class="menu-row-1">
-        <button type="button" onclick="window.location.href='todo.html'">New todo</button>
-        <button type="button" onclick="">Toggle Style</button>
+    <section class="card" id="btn-container">
+      <div class="btn-row-1">
+        <button type="button" id="newTodo">New todo</button>
+        <button type="button" id="toggleStyle">Toggle Style</button>
       </div>
-      <div class="menu-row-2">
-        <button type="button" onclick="">Name</button>
-        <button type="button" onclick="">Due date</button>
-        <button type="button" onclick="">Creation date</button>
-        <button type="button" onclick="">Importance</button>
+      <div class="btn-row-2">
+        <button type="button" data-order-by="name">Name</button>
+        <button type="button" data-order-by="duedate">Due date</button>
+        <button type="button" data-order-by="createdate">Creation date</button>
+        <button type="button" data-order-by="importance">Importance</button>
         <div class="filter">
-          <button type="button" onclick="">Filter Completed</button>
+          <button type="button" id="toggleFilter">Filter Completed</button>
         </div>
       </div>
-    </menu>
+    </section>
 
-    <todo-list>
-      <div>DueDate</div>
-      <div>Title</div>
-      <div>Importance</div>
-      <label for="done">Open</label>
-      <input type="checkbox" name="done" id="done" disabled>
-      <div>Description</div>
-      <button type="button">Edit</button>
-    </todo-list>
+    <section class="card" id="todo-container"></section>
+
+    <section class="card invisible" id="form-container">
+      <form action="./index.html" action="POST" id="form">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" required>
+        <label for="importance">Importance</label>
+        <input type="number" name="importance" id="importance" max="5">      
+        <label for="duedate">Due date</label>
+        <input type="date" name="duedate" id="duedate">
+        <div class="form-row-done">
+            <label for="done">Done</label>
+            <input type="checkbox" name="done" id="done">
+        </div>
+        <label for="description">Description</label>
+        <textarea name="description" id="description"></textarea>
+        <div>
+            <button type="button" id="btnCreate">Create</button>
+            <button type="button" id="btnCreateAndOverview">Create & Overview</button>
+            <button type="button" id="btnOverview">Overview</button>
+        </div>                 
+      </form>
+    </section>
   </main>
 
   <footer>
