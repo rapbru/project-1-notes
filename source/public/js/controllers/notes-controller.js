@@ -43,6 +43,18 @@ export class NotesController {
     }
 
     initEventHandlers() {
+        this.btnContainer.addEventListener('click', (event) => {
+            console.log(event.target);
+            if (event.target.id === 'newTodo') {
+                this.showTodoForm();
+            }
+
+            if (event.target.dataset.orderBy !== undefined && event.target.dataset.orderBy.length > 0) {
+                console.log('order by : '+ event.target.dataset.orderBy);
+            }
+
+        });
+
         this.todoContainer.addEventListener('click', (event) => {
             const id = Number(event.target.dataset.todoId);
 
