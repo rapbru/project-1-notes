@@ -37,7 +37,7 @@ export class NotesController {
         this.form['title'].value = this.todo.title;
         this.form['importance'].value = this.todo.importance;
         this.form['duedate'].value = this.todo.duedate;
-        this.form['done'].value = this.todo.isDone;
+        this.form['done'].checked = this.todo.isDone;
         this.form['description'].value = this.todo.description;
 
         this.btnCreate.dataset.action = "updateTodo";
@@ -50,7 +50,7 @@ export class NotesController {
 
     createTodo(navigate) {
         if (this.checkFormValues()) {
-            this.todo = todoService.addTodo(this.form['title'].value, this.form['importance'].value, this.form['duedate'].value, this.form['done'].value, this.form['description'].value);
+            this.todo = todoService.addTodo(this.form['title'].value, this.form['importance'].value, this.form['duedate'].value, this.form['done'].checked, this.form['description'].value);
             if (navigate) {
                 this.hideTodoForm();
             }
@@ -62,7 +62,7 @@ export class NotesController {
             this.todo.title = this.form['title'].value;
             this.todo.importance = this.form['importance'].value;
             this.todo.duedate = this.form['duedate'].value;
-            this.todo.isDone = this.form['done'].value;
+            this.todo.isDone = this.form['done'].checked;
             this.todo.description = this.form['description'].value;
             todoService.updateTodo(this.todo);
             if (navigate) {
