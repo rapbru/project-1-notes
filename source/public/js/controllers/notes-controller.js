@@ -8,11 +8,13 @@ export class NotesController {
         this.formContainer = document.querySelector('#form-container');
         this.form = document.querySelector('#form');
 
+        this.btnCreate = document.querySelector('#btnCreate');
+        this.btnCreateAndOverview = document.querySelector('#btnCreateAndOverview');
+
         this.todo = [ ];
     }
 
     showNotes() {
-        console.log('showTodos');
         this.todoContainer.innerHTML = todoTemplate.createTodoHtml(todoService.todo);
     }
 
@@ -20,6 +22,8 @@ export class NotesController {
         this.btnContainer.classList.remove('invisible');
         this.todoContainer.classList.remove('invisible');
         this.formContainer.classList.add('invisible');
+
+        this.showNotes();
     }
 
     showTodoForm() {
@@ -29,28 +33,73 @@ export class NotesController {
     }
 
     editTodo(todo) {
-        this.form['title'].value = todo.title;
-        this.form['importance'].value = todo.importance;
-        // this.form['title'].value = todo.title;
-        // this.form['title'].value = todo.title;
-        // this.form['title'].value = todo.title;
+        this.todo = todo;
+        this.form['title'].value = this.todo.title;
+        this.form['importance'].value = this.todo.importance;
+        this.form['duedate'].value = this.todo.duedate;
+        this.form['done'].value = this.todo.isDone;
+        this.form['description'].value = this.todo.description;
+
+        this.btnCreate.dataset.action = "updateTodo";
+        this.btnCreate.innerHTML = "Update";
+        this.btnCreateAndOverview.dataset.action = "updateTodo";
+        this.btnCreateAndOverview.innerHTML = "Update & Overview";
 
         this.showTodoForm();
     }
 
-    showTodo(todo) {
-        // window.location.href = `pages/todo.html?id=${todo.id}&title=${todo.title}`;
+    createTodo(navigate) {
+        if (this.checkFormValues()) {
+            this.todo = todoService.addTodo(this.form['title'].value, this.form['importance'].value, this.form['duedate'].value, this.form['done'].value, this.form['description'].value);
+            if (navigate) {
+                this.hideTodoForm();
+            }
+        }
+    }
+
+    updateTodo(navigate) {
+        if (this.checkFormValues()) {
+            this.todo.title = this.form['title'].value;
+            this.todo.importance = this.form['importance'].value;
+            this.todo.duedate = this.form['duedate'].value;
+            this.todo.isDone = this.form['done'].value;
+            this.todo.description = this.form['description'].value;
+            todoService.updateTodo(this.todo);
+            if (navigate) {
+                this.hideTodoForm();
+            }
+        }
+    }
+
+    resetForm() {
+        this.form.reset();
+        this.btnCreate.dataset.action = "addTodo";
+        this.btnCreate.innerHTML = "Create";
+        this.btnCreateAndOverview.dataset.action = "addTodo";
+        this.btnCreateAndOverview.innerHTML = "Create & Overview";
+    }
+
+    checkFormValues() {
+        this.form.reportValidity();
+        if (form.title.value.length === 0) {
+            return false;
+        } 
+        if (form.importance.value.length === 0 || form.importance.value > 5) {
+            return false;
+        } 
+        return true;
     }
 
     initEventHandlers() {
         this.btnContainer.addEventListener('click', (event) => {
-            console.log(event.target);
+    
             if (event.target.id === 'newTodo') {
+                this.resetForm();
                 this.showTodoForm();
-            }
-
-            if (event.target.dataset.orderBy !== undefined && event.target.dataset.orderBy.length > 0) {
+            } else if (event.target.dataset.orderBy !== undefined && event.target.dataset.orderBy.length > 0) {
                 console.log('order by : '+ event.target.dataset.orderBy);
+                todoService.todoSorted(event.target.dataset.orderBy, false);
+                this.showNotes();
             }
 
         });
@@ -64,7 +113,23 @@ export class NotesController {
         });
 
         this.formContainer.addEventListener('click', (event) => {
-            this.hideTodoForm();
+            if (event.target.tagName === 'BUTTON') {
+                if (event.target === this.btnCreate) {
+                    if (event.target.dataset.action === 'addTodo') {
+                        this.createTodo(false);
+                    } else {
+                        this.updateTodo(false);
+                    }
+                } else if (event.target === this.btnCreateAndOverview) {
+                    if (event.target.dataset.action === 'addTodo') {
+                        this.createTodo(true);
+                    } else {
+                        this.updateTodo(true);
+                    }
+                } else {
+                    this.hideTodoForm();
+                }
+            }            
         });
     }
 
@@ -73,7 +138,6 @@ export class NotesController {
     }
 
     initialize() {
-        console.log('init');
         this.initEventHandlers();
         todoService.loadData();
         this.renderNotesView();

@@ -4,12 +4,14 @@
  */
 export class TodoStorage {
     constructor() {
+        localStorage.clear();
         const todo = JSON.parse(localStorage.getItem('TodoStorage_v1') || "[ ]");
         this.todo = todo;
         localStorage.setItem('TodoStorage_v1', JSON.stringify(todo));
     }
 
     getAll() {
+        console.log(this.todo);
         return this.todo;
     }
 

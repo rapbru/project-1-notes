@@ -7,6 +7,7 @@
   <script defer src="js/controllers/notes-controller.js" type="module"></script>
 
   <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/todo-template.css">
 </head>
 <body>
 
@@ -38,7 +39,7 @@
         <label for="title">Title</label>
         <input type="text" name="title" id="title" required>
         <label for="importance">Importance</label>
-        <input type="number" name="importance" id="importance" max="5">      
+        <input type="number" name="importance" id="importance" required min="1" max="5">      
         <label for="duedate">Due date</label>
         <input type="date" name="duedate" id="duedate">
         <div class="form-row-done">
@@ -48,8 +49,8 @@
         <label for="description">Description</label>
         <textarea name="description" id="description"></textarea>
         <div>
-            <button type="button" id="btnCreate">Create</button>
-            <button type="button" id="btnCreateAndOverview">Create & Overview</button>
+            <button type="button" id="btnCreate" data-action="addTodo">Create</button>
+            <button type="button" id="btnCreateAndOverview" data-action="addTodo">Create & Overview</button>
             <button type="button" id="btnOverview">Overview</button>
         </div>                 
       </form>
