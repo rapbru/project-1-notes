@@ -108,7 +108,7 @@ export class NotesController {
             const id = Number(event.target.dataset.todoId);
 
             if (!isNaN(id)) {
-                this.editTodo(todoService.todo[id]);
+                this.editTodo(todoService.todo.find(todo => todo.id === id));
             }
         });
 

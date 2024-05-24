@@ -25,7 +25,7 @@ export class TodoService {
     }
 
     todoSorted(orderBy, desc) {
-        return this.todo.sort((a, b) => {
+        this.todo.sort((a, b) => {
             if (a[orderBy] < b[orderBy]) return desc? 1:-1;
             if (a[orderBy] > b[orderBy]) return desc? -1:1;
             return 0;
