@@ -40,6 +40,11 @@ button {
     cursor: pointer;        
     border-radius: 5px;     
     border: none;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: blue;
 }
 
 .btn-row-1 { 
@@ -93,6 +98,11 @@ main form {
 .form-btn-delete button {
     background-color: red;
     color: white;
+    transition: background-color 0.3s ease;
+}
+
+.form-btn-delete button:hover {
+    background-color: rgb(171, 0, 0);
 }
 
 .sortSymbol {

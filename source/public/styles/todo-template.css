@@ -41,6 +41,11 @@
     height: 80%;
     background-color: #007BFF;
     color: white;
+    transition: background-color 0.3s ease;
+}
+
+.todo-entry .edit:hover {
+    background-color: blue;
 }
 
 .no-todo {
