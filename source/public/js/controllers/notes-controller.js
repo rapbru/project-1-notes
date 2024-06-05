@@ -72,11 +72,9 @@ export class NotesController {
     }
 
     deleteTodo(navigate) {
-        if (this.checkFormValues()) {
-            todoService.removeTodo(this.todo);
-            if (navigate) {
-                this.hideTodoForm();
-            }
+        todoService.removeTodo(this.todo);
+        if (navigate) {
+            this.hideTodoForm();
         }
     }
 

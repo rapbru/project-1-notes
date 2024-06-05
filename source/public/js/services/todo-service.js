@@ -80,8 +80,8 @@ export class TodoService {
         const index = this.todo.findIndex(todo => todo.id === id && todo.title === title);
         if (index !== -1) {
             this.todo.splice(index, 1);
+            this.storage.update(this.todo);
         }
-        this.storage.update(this.todo);
     }
 }
 
