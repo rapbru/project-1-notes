@@ -71,6 +71,15 @@ export class NotesController {
         }
     }
 
+    deleteTodo(navigate) {
+        if (this.checkFormValues()) {
+            todoService.removeTodo(this.todo);
+            if (navigate) {
+                this.hideTodoForm();
+            }
+        }
+    }
+
     resetForm() {
         this.form.reset();
         this.btnCreate.dataset.action = "addTodo";
@@ -90,15 +99,27 @@ export class NotesController {
         return true;
     }
 
+    updateSortSymbols(orderBy) {
+        document.querySelectorAll('.sortSymbol').forEach(el => el.className = 'sortSymbol');
+        const btn = orderBy.charAt(0).toUpperCase() + orderBy.slice(1);
+        const sortSymbol = document.getElementById(`btn${btn}`);
+        sortSymbol.className = `sortSymbol ${todoService.currentSortOrder.desc ? 'desc' : 'asc'}`;
+    }
+
     initEventHandlers() {
         this.btnContainer.addEventListener('click', (event) => {
-    
             if (event.target.id === 'newTodo') {
                 this.resetForm();
                 this.showTodoForm();
+            } else if (event.target.id === 'toggleFilter') {
+                todoService.toggleFilter();
+                this.showNotes();
+            } else if (event.target.id ==='toggleStyle') {
+                document.body.classList.toggle('dark-theme');
             } else if (event.target.dataset.orderBy !== undefined && event.target.dataset.orderBy.length > 0) {
                 console.log('order by : '+ event.target.dataset.orderBy);
-                todoService.todoSorted(event.target.dataset.orderBy, false);
+                todoService.todoSorted(event.target.dataset.orderBy);
+                this.updateSortSymbols(event.target.dataset.orderBy);
                 this.showNotes();
             }
 
@@ -126,6 +147,8 @@ export class NotesController {
                     } else {
                         this.updateTodo(true);
                     }
+                } else if (event.target.id === 'btnDelete') {
+                    this.deleteTodo(true);
                 } else {
                     this.hideTodoForm();
                 }

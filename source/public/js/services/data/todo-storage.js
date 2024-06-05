@@ -12,6 +12,8 @@ export class TodoStorage {
 
     getAll() {
         console.log(this.todo);
+        const todo = JSON.parse(localStorage.getItem('TodoStorage_v1') || "[ ]");
+        this.todo = todo;
         return this.todo;
     }
 

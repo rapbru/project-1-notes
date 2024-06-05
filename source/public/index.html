@@ -6,6 +6,7 @@
 
   <script defer src="js/controllers/notes-controller.js" type="module"></script>
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
   <link rel="stylesheet" href="styles/index.css">
   <link rel="stylesheet" href="styles/todo-template.css">
 </head>
@@ -22,10 +23,10 @@
         <button type="button" id="toggleStyle">Toggle Style</button>
       </div>
       <div class="btn-row-2">
-        <button type="button" data-order-by="name">Name</button>
-        <button type="button" data-order-by="duedate">Due date</button>
-        <button type="button" data-order-by="createdate">Creation date</button>
-        <button type="button" data-order-by="importance">Importance</button>
+        <button class= "sortSymbol" type="button" data-order-by="duedate" id="btnDuedate">Due date</button>
+        <button class= "sortSymbol" type="button" data-order-by="title" id="btnTitle">Title</span></button>
+        <button class= "sortSymbol" type="button" data-order-by="createdate" id="btnCreatedate">Creation date</button>
+        <button class= "sortSymbol" type="button" data-order-by="importance" id="btnImportance">Importance</button>
         <div class="filter">
           <button type="button" id="toggleFilter">Filter Completed</button>
         </div>
@@ -37,9 +38,9 @@
     <section class="card invisible" id="form-container">
       <form action="./index.html" action="POST" id="form">
         <label for="title">Title</label>
-        <input type="text" name="title" id="title" required>
+        <input type="text" name="title" id="title" required maxlength="50">
         <label for="importance">Importance</label>
-        <input type="number" name="importance" id="importance" required min="1" max="5">      
+        <input type="number" name="importance" id="importance" required min="1" max="5" step="1">      
         <label for="duedate">Due date</label>
         <input type="date" name="duedate" id="duedate">
         <div class="form-row-done">
@@ -47,11 +48,14 @@
             <input type="checkbox" name="done" id="done">
         </div>
         <label for="description">Description</label>
-        <textarea name="description" id="description"></textarea>
-        <div>
+        <textarea name="description" id="description" maxlength="255"></textarea>
+        <div class="form-btn">
             <button type="button" id="btnCreate" data-action="addTodo">Create</button>
             <button type="button" id="btnCreateAndOverview" data-action="addTodo">Create & Overview</button>
             <button type="button" id="btnOverview">Overview</button>
+            <div class="form-btn-delete">
+              <button type="button" id="btnDelete">Delete</button>
+            </div>
         </div>                 
       </form>
     </section>

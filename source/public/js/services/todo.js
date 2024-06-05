@@ -1,11 +1,12 @@
 export class Todo {
-    constructor(id, title, importance, duedate, done, description) {
+    constructor(id, title, importance, duedate, done, description, createdate) {
         this.id = id;
         this.title = title;
         this.importance = importance;
         this.duedate = duedate;
         this.isDone = done || false;
         this.description = description;
+        this.createdate = createdate;
     }
 
     toJSON() {
@@ -15,7 +16,8 @@ export class Todo {
             importance: this.importance,
             duedate: this.duedate,
             isDone: this.isDone,
-            description: this.description
+            description: this.description,
+            createdate: this.createdate
         };
     }
 }

@@ -8,6 +8,10 @@
     --color: white;
 }
 
+body, html, button, label, textarea, input {
+    font-family: 'Roboto', sans-serif;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -17,7 +21,7 @@ body {
 
 main {
     margin: 10px;
-}
+} 
 
 .invisible{
     visibility: hidden;
@@ -26,6 +30,16 @@ main {
 
 .main-container {
     visibility: hidden;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;         
+    padding: 3px 10px;
+    font-size: 16px;        
+    cursor: pointer;        
+    border-radius: 5px;     
+    border: none;
 }
 
 .btn-row-1 { 
@@ -58,4 +72,39 @@ main form {
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
+}
+
+.form-row-done input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.form-btn {
+    display: flex;
+    column-gap: 5px;
+    margin-top: 5px;
+}
+
+.form-btn-delete {
+    display: flex;
+    flex: auto;
+    justify-content: flex-end;
+}
+
+.form-btn-delete button {
+    background-color: red;
+    color: white;
+}
+
+.sortSymbol {
+    color: white;          
+}
+
+.sortSymbol.asc::after {
+    margin-left: 10px;
+    content: "▲";
+}
+
+.sortSymbol.desc::after {
+    margin-left: 10px;
+    content: "▼";
 }

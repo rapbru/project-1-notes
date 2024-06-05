@@ -23,6 +23,10 @@ export class TodoTemplate {
             }
         }
 
+        if (todo.length === 0) {
+            return `<div class="no-todo">Kein Todo gefunden</div>`;
+        }
+
         return todo.map(todo => `
             <div class="todo-entry">
                 <div class="duedate">${calculateDaysUntil(todo.duedate)}</div>
