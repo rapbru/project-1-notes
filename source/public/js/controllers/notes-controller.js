@@ -53,6 +53,11 @@ export class NotesController {
             this.todo = todoService.addTodo(this.form['title'].value, this.form['importance'].value, this.form['duedate'].value, this.form['done'].checked, this.form['description'].value);
             if (navigate) {
                 this.hideTodoForm();
+            } else {
+                this.btnCreate.dataset.action = "updateTodo";
+                this.btnCreate.innerHTML = "Update";
+                this.btnCreateAndOverview.dataset.action = "updateTodo";
+                this.btnCreateAndOverview.innerHTML = "Update & Overview";
             }
         }
     }
