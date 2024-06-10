@@ -14,8 +14,9 @@ export class NotesController {
         this.todo = [ ];
     }
 
-    showNotes() {
-        this.todoContainer.innerHTML = todoTemplate.createTodoHtml(todoService.todo);
+    async showNotes() {
+        // this.todoContainer.innerHTML = todoTemplate.createTodoHtml(todoService.todos);
+        this.todoContainer.innerHTML = todoTemplate.createTodoHtml(await todoService.getTodos());
     }
 
     hideTodoForm() {
@@ -110,12 +111,12 @@ export class NotesController {
     }
 
     initEventHandlers() {
-        this.btnContainer.addEventListener('click', (event) => {
+        this.btnContainer.addEventListener('click', async (event) => {
             if (event.target.id === 'newTodo') {
                 this.resetForm();
                 this.showTodoForm();
             } else if (event.target.id === 'toggleFilter') {
-                todoService.toggleFilter();
+                await todoService.toggleFilter();
                 this.showNotes();
             } else if (event.target.id ==='toggleStyle') {
                 document.body.classList.toggle('dark-theme');
@@ -130,9 +131,9 @@ export class NotesController {
 
         this.todoContainer.addEventListener('click', (event) => {
             const id = Number(event.target.dataset.todoId);
-
+            console.log('id:'+id);
             if (!isNaN(id)) {
-                this.editTodo(todoService.todo.find(todo => todo.id === id));
+                this.editTodo(todoService.todos.find(todo => todo.id === id));
             }
         });
 
