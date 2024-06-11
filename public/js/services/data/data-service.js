@@ -5,7 +5,6 @@ export class DataService {
     }
 
     async createTodo(todo) {
-        console.log(todo);
         return httpService.ajax("POST", "/todos/", todo);    
     }
 
@@ -14,9 +13,7 @@ export class DataService {
     }
 
     async update(todo) {
-        console.log('put todo');
-        console.log(todo);
-        return httpService.ajax("POST", "/todos/", todo);
+        return httpService.ajax("PUT", `/todos/${todo.dbid}`, todo);
     }
 
     async deleteTodo(id) {

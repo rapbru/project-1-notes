@@ -1,6 +1,15 @@
-{"id":4,"title":"test","importance":"2","duedate":"2024-06-14","isDone":false,"description":"","createdate":{"$$date":1718022425959},"_id":"CGFdpj5kLRe8bmjV"}
-{"id":2,"title":"Einkaufen","importance":3,"duedate":"2024-05-10","isDone":true,"description":"Milch, Brot, Käse und vieles mehr.","createdate":{"$$date":1718020037453},"_id":"V7D5G19Szfhqi6oE"}
-{"id":1,"title":"Ferien","importance":1,"duedate":null,"isDone":false,"description":"🏖️","createdate":{"$$date":1718020037334},"_id":"dEb1hrI8FKTrLrAp"}
-{"id":4,"title":"test","importance":"2","duedate":"2024-06-14","isDone":true,"description":"","createdate":{"$$date":1718022438463},"_id":"szo1QC1gnpTyUEXR"}
-{"id":3,"title":"Coiffeur Termin","importance":4,"duedate":"2024-06-12","isDone":false,"description":"","createdate":{"$$date":1718020037590},"_id":"t9dmveLoJusH722l"}
-{"id":0,"title":"Geburtstag Mami","importance":5,"duedate":"2024-09-01","isDone":false,"description":"Nicht vergessen!","createdate":{"$$date":1718020037137},"_id":"xC10H6qrNa7L1Wbw"}
+{"id":5,"title":"testttt","importance":"3","duedate":"2024-06-20","isDone":false,"description":"","createdate":{"$$date":1718096342943},"_id":"AM9ij8sb0yADoEJ8"}
+{"id":2,"title":"Einkaufen","importance":3,"duedate":"2024-05-10","isDone":true,"description":"Milch, Brot, Käse und vieles mehr.","createdate":{"$$date":1718096268074},"_id":"K6eG6ZUwHgUXOOqk"}
+{"id":3,"title":"Coiffeur Termin","importance":4,"duedate":"2024-06-12","isDone":false,"description":"","createdate":{"$$date":1718096268075},"_id":"ND5mQnFPwnudOueB"}
+{"id":0,"title":"Geburtstag Mami","importance":5,"duedate":"2024-09-01","isDone":false,"description":"Nicht vergessen!","createdate":{"$$date":1718096268034},"_id":"gWJilHaXvwmN7ly4"}
+{"id":1,"title":"Ferien","importance":1,"duedate":null,"isDone":false,"description":"🏖️","createdate":{"$$date":1718096268071},"_id":"uQUTuEcnFrHI9Jy9"}
+{"id":5,"title":"testttt","importance":"3","duedate":"2024-06-20","isDone":true,"description":"","createdate":{"$$date":1718096342943},"_id":"AM9ij8sb0yADoEJ8"}
+{"$$deleted":true,"_id":"AM9ij8sb0yADoEJ8"}
+{"$$deleted":true,"_id":"uQUTuEcnFrHI9Jy9"}
+{"$$deleted":true,"_id":"gWJilHaXvwmN7ly4"}
+{"$$deleted":true,"_id":"ND5mQnFPwnudOueB"}
+{"$$deleted":true,"_id":"K6eG6ZUwHgUXOOqk"}
+{"id":0,"title":"Geburtstag Mami","importance":5,"duedate":"2024-09-01","isDone":false,"description":"Nicht vergessen!","createdate":{"$$date":1718096968942},"_id":"fMVVQnrUahdRqKIp"}
+{"id":1,"title":"Ferien","importance":1,"duedate":null,"isDone":false,"description":"🏖️","createdate":{"$$date":1718096968945},"_id":"0cs2qfcM45N9RhPT"}
+{"id":2,"title":"Einkaufen","importance":3,"duedate":"2024-05-10","isDone":true,"description":"Milch, Brot, Käse und vieles mehr.","createdate":{"$$date":1718096968946},"_id":"XZw5rIKxnxRRo07Z"}
+{"id":3,"title":"Coiffeur Termin","importance":4,"duedate":"2024-06-12","isDone":false,"description":"","createdate":{"$$date":1718096968947},"_id":"iYKsQZhZkEhL8knH"}

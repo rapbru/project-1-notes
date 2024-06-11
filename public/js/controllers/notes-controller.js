@@ -49,9 +49,9 @@ export class NotesController {
         this.showTodoForm();
     }
 
-    createTodo(navigate) {
+    async createTodo(navigate) {
         if (this.checkFormValues()) {
-            this.todo = todoService.addTodo(this.form['title'].value, this.form['importance'].value, this.form['duedate'].value, this.form['done'].checked, this.form['description'].value);
+            this.todo = await todoService.addTodo(this.form['title'].value, this.form['importance'].value, this.form['duedate'].value, this.form['done'].checked, this.form['description'].value);
             if (navigate) {
                 this.hideTodoForm();
             } else {
@@ -164,9 +164,9 @@ export class NotesController {
         this.showNotes();
     }
 
-    initialize() {
+    async initialize() {
         this.initEventHandlers();
-        todoService.loadData();
+        await todoService.loadData();
         this.renderNotesView();
     }
 }

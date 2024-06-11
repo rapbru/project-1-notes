@@ -12,13 +12,19 @@ export class TodoService {
     }
 
     async getTodos() {
-        if (this.todos.length === 0) this.todos = await this.storage2.getAll();
+        if (this.todos.length === 0) {
+            const allTodos = await this.storage2.getAll();
+            console.log(allTodos);
+            this.todos = allTodos.map(todo => new Todo(todo.id, todo.title, todo.importance, todo.duedate, todo.isDone, todo.description, todo.createdate, todo._id));
+        }
+        console.log('gettodos');
+        console.log(this.todos);
         return this.todos;
     }
 
     async loadData() {
         const allTodos = await this.storage2.getAll();  // Warten auf die Auflösung des Promises
-        this.todos = allTodos.map(todo => new Todo(todo.id, todo.title, todo.importance, todo.duedate, todo.isDone, todo.description, todo.createdate));
+        this.todos = allTodos.map(todo => new Todo(todo.id, todo.title, todo.importance, todo.duedate, todo.isDone, todo.description, todo.createdate, todo._id));
         // this.todos = this.storage.getAll().map(todo => new Todo(todo.id, todo.title, todo.importance, todo.duedate, todo.isDone, todo.description, todo.createdate));
 
         if (this.todos.length === 0) { // initial data seed
@@ -27,10 +33,12 @@ export class TodoService {
             this.todos.push(new Todo(1, 'Ferien', 1, null, false, '🏖️', new Date('2024-06-01')));
             this.todos.push(new Todo(2, 'Einkaufen', 3, '2024-05-10', true, 'Milch, Brot, Käse und vieles mehr.', new Date('2024-02-01')));
             this.todos.push(new Todo(3, 'Coiffeur Termin', 4, '2024-06-12', false, '', new Date('2024-06-02')));
-            // this.storage2.createTodo(this.todos[0]);
-            // this.storage2.createTodo(this.todos[1]);
-            // this.storage2.createTodo(this.todos[2]);
-            // this.storage2.createTodo(this.todos[3]);
+
+            this.storage2.createTodo(this.todos[0]);
+            this.storage2.createTodo(this.todos[1]);
+            this.storage2.createTodo(this.todos[2]);
+            this.storage2.createTodo(this.todos[3]);
+
             this.save();
         }
 
@@ -70,11 +78,11 @@ export class TodoService {
         this.filter = !this.filter;
     }
 
-    addTodo(title , importance, duedate, isDone, description) {
-        const todo = new Todo(this.todos.length, title, importance, duedate, isDone, description, new Date());
+    async addTodo(title , importance, duedate, isDone, description) {
+        let todo = new Todo(this.todos.length, title, importance, duedate, isDone, description, new Date());
+        todo = await this.storage2.createTodo(todo);
         this.todos.push(todo);
-        this.save();
-        this.storage2.createTodo(todo);
+        this.save();     
         return todo;
     }
 
@@ -83,8 +91,11 @@ export class TodoService {
         const id = todo.id;
         const index = this.todos.findIndex(todo => todo.id === id);
         if (index !== -1) {
+            todo.dbid = this.todos[index].dbid;
             this.todos[index] = todo;
         }
+        console.log('update todo');
+        console.log(todo);
         this.storage.update(this.todos);
         this.storage2.update(todo);
     }
@@ -94,9 +105,11 @@ export class TodoService {
         const title = todo.title;
         const index = this.todos.findIndex(todo => todo.id === id && todo.title === title);
         if (index !== -1) {
+            todo.dbid = this.todos[index].dbid;
             this.todos.splice(index, 1);
             this.storage.update(this.todos);
         }
+        this.storage2.deleteTodo(todo.dbid);
     }
 }
 

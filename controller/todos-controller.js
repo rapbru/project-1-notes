@@ -11,11 +11,11 @@ export class TodosController {
     };
 
     updateTodo = async (req, res) => {
-        res.json(await todoStorage.update(req.body));
+        res.json(await todoStorage.update(req.params.id, req.body));
     };
 
     deleteTodo = async (req, res) => {
-        res.json(await todoStorage.delete(req.body.todo.id)); // TODO should return 402 if not ok
+        res.json(await todoStorage.delete(req.params.id)); // TODO should return 402 if not ok
     };
 }
 

@@ -11,21 +11,28 @@ export class TodoStorage {
 
     async add(todo) {
         const aTodo = new Todo(todo.id, todo.title, todo.importance, todo.duedate, todo.isDone, todo.description, new Date());
-        return await this.db.insert(aTodo);
+        return this.db.insert(aTodo);
     }
 
     async delete(aId) {
-        await this.db.update({id: aId}, {$set: {"state": "DELETED"}});
-        return this.get(id);
+        this.db.remove({_id: aId});
+        return this.get(aId);
     }
 
-    async update(todo) {
-        await this.db.update({id: todo.id}, {$set: {"duedate": todo.duedate}});
-        return this.get(todo.id);
+    async update(aId, todo) {
+        this.db.update({_id: aId}, 
+                        {$set: {
+                            "title": todo.title,
+                            "importance": todo.importance,
+                            "duedate": todo.duedate,
+                            "isDone": todo.isDone,
+                            "description": todo.description
+        }});
+        return this.get(todo.dbid);
     }
 
     async get(aId) {
-        return this.db.findOne({id: aId});
+        return this.db.findOne({_id: aId});
     }
 
     async all() {
