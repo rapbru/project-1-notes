@@ -1,17 +1,13 @@
 import DataStore from 'nedb-promises';
-import { Todo } from '../Model/todo.js';
 
 export class TodoStorage {
     constructor(db) {
         const options = process.env.DB_TYPE === "FILE" ? {filename: './data/todos.db', autoload: true} : {}
         this.db = db || new DataStore(options);
-
-
     }
 
     async add(todo) {
-        const aTodo = new Todo(todo.id, todo.title, todo.importance, todo.duedate, todo.isDone, todo.description, new Date());
-        return this.db.insert(aTodo);
+        return this.db.insert(todo);
     }
 
     async delete(aId) {

@@ -15,7 +15,6 @@ export class NotesController {
     }
 
     async showNotes() {
-        // this.todoContainer.innerHTML = todoTemplate.createTodoHtml(todoService.todos);
         this.todoContainer.innerHTML = todoTemplate.createTodoHtml(await todoService.getTodos());
     }
 
@@ -63,22 +62,22 @@ export class NotesController {
         }
     }
 
-    updateTodo(navigate) {
+    async updateTodo(navigate) {
         if (this.checkFormValues()) {
             this.todo.title = this.form['title'].value;
             this.todo.importance = this.form['importance'].value;
             this.todo.duedate = this.form['duedate'].value;
             this.todo.isDone = this.form['done'].checked;
             this.todo.description = this.form['description'].value;
-            todoService.updateTodo(this.todo);
+            await todoService.updateTodo(this.todo);
             if (navigate) {
                 this.hideTodoForm();
             }
         }
     }
 
-    deleteTodo(navigate) {
-        todoService.removeTodo(this.todo);
+    async deleteTodo(navigate) {
+        await todoService.removeTodo(this.todo);
         if (navigate) {
             this.hideTodoForm();
         }
@@ -121,7 +120,6 @@ export class NotesController {
             } else if (event.target.id ==='toggleStyle') {
                 document.body.classList.toggle('dark-theme');
             } else if (event.target.dataset.orderBy !== undefined && event.target.dataset.orderBy.length > 0) {
-                console.log('order by : '+ event.target.dataset.orderBy);
                 todoService.todoSorted(event.target.dataset.orderBy);
                 this.updateSortSymbols(event.target.dataset.orderBy);
                 this.showNotes();
@@ -131,7 +129,6 @@ export class NotesController {
 
         this.todoContainer.addEventListener('click', (event) => {
             const id = Number(event.target.dataset.todoId);
-            console.log('id:'+id);
             if (!isNaN(id)) {
                 this.editTodo(todoService.todos.find(todo => todo.id === id));
             }
