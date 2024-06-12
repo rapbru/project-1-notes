@@ -44,15 +44,16 @@ export class TodoService {
     }
 
     async toggleFilter() {
+        await this.loadData();
         if (!this.filter) {
             this.todos = this.todos.filter(todo => !todo.isDone);
         } else {
-            await this.loadData();
-            const col = this.currentSortOrder.column || null;
-            const desc = !this.currentSortOrder.desc || false;
-            this.currentSortOrder = { column: col , desc};
-            this.todoSorted(this.currentSortOrder.column);
+            this.todos = this.todos.filter(todo => todo.isDone);
         }
+        const col = this.currentSortOrder.column || null;
+        const desc = !this.currentSortOrder.desc || false;
+        this.currentSortOrder = { column: col , desc};
+        this.todoSorted(this.currentSortOrder.column);
         this.filter = !this.filter;
     }
 
