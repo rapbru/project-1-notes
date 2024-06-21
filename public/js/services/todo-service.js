@@ -10,11 +10,12 @@ export class TodoService {
     }
 
     async getTodos() {
+        this.setFilter(this.filter);
         return this.todos;
     }
 
     async loadData() {
-        const allTodos = await this.storage.getAll();  // Warten auf die Auflösung des Promises
+        const allTodos = await this.storage.getAll();
         this.todos = allTodos.map(todo => new Todo(todo.id, todo.title, todo.importance, todo.duedate, todo.isDone, todo.description, todo.createdate, todo._id));
 
         if (this.todos.length === 0) { // initial data seed
@@ -25,7 +26,6 @@ export class TodoService {
 
             this.todos.forEach(todo => this.storage.createTodo(todo));
         }
-
     }
 
     todoSorted(orderBy) {
@@ -42,19 +42,29 @@ export class TodoService {
             return 0;
         });
     }
-
-    async toggleFilter() {
-        await this.loadData();
-        if (!this.filter) {
+    
+    setFilter(done) {
+        if (!done) {
             this.todos = this.todos.filter(todo => !todo.isDone);
         } else {
             this.todos = this.todos.filter(todo => todo.isDone);
         }
-        const col = this.currentSortOrder.column || null;
-        const desc = !this.currentSortOrder.desc || false;
-        this.currentSortOrder = { column: col , desc};
-        this.todoSorted(this.currentSortOrder.column);
+    }
+
+    async toggleFilter() {
+        await this.loadData();
+        this.setFilter(!this.filter);
+        this.sortOrder(false);
         this.filter = !this.filter;
+    }
+
+    sortOrder(recoverSortOrder) {
+        if (this.currentSortOrder.column !== null || recoverSortOrder === false) {
+            const col = this.currentSortOrder.column || null;
+            const desc = !this.currentSortOrder.desc || false;
+            this.currentSortOrder = {column: col , desc};
+            this.todoSorted(this.currentSortOrder.column);
+        }
     }
 
     async addTodo(title , importance, duedate, isDone, description) {
@@ -62,6 +72,7 @@ export class TodoService {
         todo = await this.storage.createTodo(todo);
         todo.dbid = todo._id;
         this.todos.push(todo);
+        this.sortOrder(true);
 
         return todo;
     }
@@ -73,6 +84,7 @@ export class TodoService {
             todo.dbid = this.todos[index].dbid;
             this.todos[index] = todo;
         }
+        this.sortOrder(true);
         await this.storage.update(todo);
     }
 

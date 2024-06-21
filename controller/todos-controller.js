@@ -15,7 +15,7 @@ export class TodosController {
     };
 
     deleteTodo = async (req, res) => {
-        res.json(await todoStorage.delete(req.params.id)); // TODO should return 402 if not ok
+        res.json(await todoStorage.delete(req.params.id));
     };
 }
 
