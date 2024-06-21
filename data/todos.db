@@ -1,18 +1,4 @@
-{"id":3,"title":"Coiffeur Termin","importance":4,"duedate":"2024-06-12","isDone":false,"description":"","createdate":"2024-06-02T00:00:00.000Z","_id":"0qeuceGZHCciUZYP"}
-{"id":3,"title":"testdate","importance":"2","duedate":"2024-06-21","isDone":false,"description":"","createdate":"2024-06-12T11:08:36.736Z","_id":"5tk6bmVHwjk4cf85"}
-{"id":4,"title":"date","importance":"3","duedate":"2024-03-06","isDone":true,"description":"","createdate":"2024-06-12T11:08:57.103Z","_id":"PVo93Hzrq1qXpXWT"}
-{"id":2,"title":"Einkaufen","importance":3,"duedate":"2024-05-10","isDone":true,"description":"Milch, Brot, Käse und vieles mehr.","createdate":"2024-02-01T00:00:00.000Z","_id":"VGXQPfvBOR80zH3t"}
-{"id":1,"title":"Ferien","importance":1,"duedate":null,"isDone":false,"description":"🏖️","createdate":"2024-06-01T00:00:00.000Z","_id":"jbPON9ht0OdmZZuL"}
-{"id":0,"title":"Geburtstag Mami","importance":5,"duedate":"2024-09-01","isDone":false,"description":"Nicht vergessen!","createdate":"2023-09-01T00:00:00.000Z","_id":"o8dTyhdCEkrk8OGx"}
-{"$$deleted":true,"_id":"0qeuceGZHCciUZYP"}
-{"$$deleted":true,"_id":"5tk6bmVHwjk4cf85"}
-{"$$deleted":true,"_id":"o8dTyhdCEkrk8OGx"}
-{"$$deleted":true,"_id":"jbPON9ht0OdmZZuL"}
-{"$$deleted":true,"_id":"VGXQPfvBOR80zH3t"}
-{"$$deleted":true,"_id":"PVo93Hzrq1qXpXWT"}
 {"id":0,"title":"Geburtstag Mami","importance":5,"duedate":"2024-09-01","isDone":false,"description":"Nicht vergessen!","createdate":"2023-09-01T00:00:00.000Z","_id":"ANrCsYmf72EGoi7J"}
 {"id":1,"title":"Ferien","importance":1,"duedate":null,"isDone":false,"description":"🏖️","createdate":"2024-06-01T00:00:00.000Z","_id":"aYz1mdsKe0tSYXeI"}
 {"id":2,"title":"Einkaufen","importance":3,"duedate":"2024-05-10","isDone":true,"description":"Milch, Brot, Käse und vieles mehr.","createdate":"2024-02-01T00:00:00.000Z","_id":"KfKjmedt148Usqb3"}
 {"id":3,"title":"Coiffeur Termin","importance":4,"duedate":"2024-06-12","isDone":false,"description":"","createdate":"2024-06-02T00:00:00.000Z","_id":"HRc5CdznpnAONMSS"}
-{"id":3,"title":"test","importance":"2","duedate":"","isDone":false,"description":"","createdate":"2024-06-21T14:48:27.710Z","_id":"q4dLtNCegy0pUm28"}
-{"$$deleted":true,"_id":"aYz1mdsKe0tSYXeI"}
